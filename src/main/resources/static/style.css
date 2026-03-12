@@ -1,0 +1,82 @@
+/* Ümumi body tərzi */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Başlıq */
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input sahələri */
+input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Mesaj göndərmə düyməsi */
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Chat box (ul) */
+#chat {
+    list-style-type: none;
+    padding: 10px;
+    width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/* Hər bir mesaj (li) */
+#chat li {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #e1ffc7; /* Açıq yaşıl */
+    word-wrap: break-word;
+}
+
+/* Göndərən mesajları fərqləndirmək üçün */
+#chat li strong {
+    color: #333;
+}
+
+/* Scroll bar tərzi */
+#chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat::-webkit-scrollbar-track {
+    background: #f0f2f5;
+}
+
+#chat::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
