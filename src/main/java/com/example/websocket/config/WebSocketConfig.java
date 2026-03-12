@@ -9,7 +9,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 @Configuration
 @EnableWebSocket
-public class WebSocketConfig implements WebSocketConfigurer {
+public class WebSocketConfig implements WebSocketConfigurer { //config hissedir
 
     private final ChatHandler chatHandler;
 
@@ -21,7 +21,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 
         registry
-                .addHandler(chatHandler, "/chat")
+                .addHandler(chatHandler, "/chat") //endpoints
                 .setAllowedOrigins("*");
 
     }

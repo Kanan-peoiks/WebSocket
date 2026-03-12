@@ -23,15 +23,15 @@ public class ChatHandler extends TextWebSocketHandler {
         }
 
     private static final Set<WebSocketSession> sessions =
-            Collections.synchronizedSet(new HashSet<>());
-
+            Collections.synchronizedSet(new HashSet<>()); // sessions-a yadda saxlamaq ucun
+    //sinxrondur, cunki eyni anda mesaj gondermek ucun
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
 
         sessions.add(session);
 
-        System.out.println("User connected: " + session.getId());
+        System.out.println("User connected: " + session.getId()); //user qosulduqda
 
     }
 
@@ -41,29 +41,27 @@ public class ChatHandler extends TextWebSocketHandler {
         String payload = message.getPayload();
 
         ChatMessage chatMessage =
-                objectMapper.readValue(payload, ChatMessage.class);
+                objectMapper.readValue(payload, ChatMessage.class); //json java obyektine cevrilir
 
-        chatMessage.setTimestamp(LocalDateTime.now());
+        chatMessage.setTimestamp(LocalDateTime.now()); // zaman daxil edilir
 
         String responseJson =
-                objectMapper.writeValueAsString(chatMessage);
+                objectMapper.writeValueAsString(chatMessage); //json-a geri cevrilir
 
-        for (WebSocketSession s : sessions) {
+        for (WebSocketSession ses : sessions) { //sessionlar uzre dovr
 
-            if (s.isOpen() && !s.getId().equals(session.getId())) {
-
-                s.sendMessage(new TextMessage(responseJson));
-
+            if (ses.isOpen() && !ses.getId().equals(session.getId())) {
+              // s.isOpen() - istifadeci var
+                //!ses.getId().equals(session.getId()) - istifadeci oz mesajini gormesin
+                ses.sendMessage(new TextMessage(responseJson)); //send olunur
             }
-
         }
-
     }
 
     @Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) { //user cixdiqda
 
-        sessions.remove(session);
+        sessions.remove(session); //session silinir
 
         System.out.println("User disconnected: " + session.getId());
 
